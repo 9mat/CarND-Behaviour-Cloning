@@ -72,7 +72,7 @@ when needed.
 The design of the final model follow closely the implementation of the nVidia paper.
 It includes 5 convolutional layers followed by 4 fully connected layers.
 ReLU activation was used throughout.
-I added 3 dropout layers to prevent over-fitting.
+I added 3 dropout layers as well as L2 regularization to all appropiate layers to prevent over-fitting.
 
               layer output size
      -------------- ------------------
