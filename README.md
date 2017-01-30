@@ -50,11 +50,29 @@ to the right and subtracting when shifting to the left.
 4. Vertical shift: to mimic going up and down slopes
 5. Brightness adjustment: to mimic different lighting conditions
 
+This is an image from the orignal data set  
+![src](./img/src.png)
+
+This is the same image after being cropped and resized
+![cropped](./img/cropped.png)
+
+This is several images generated from the same image with random transformation
+![jitter](./img/jitter.png)
+
+The dataset is rather unbalanced, with a large portion having steering of zeros (driving
+straight).
+Because of that, at the begining of the training, I will decrease the proportion of 
+samples with small/zero steering angle in the training set to help the model learn
+to drive in compliated situation (curve track). At later epoches, I will gradually
+introduce those samples back to make sure the model also learn to drive straight
+when needed.
+![histogram](./img/hist.png)
+
 ## Neural network design
 The design of the final model follow closely the implementation of the nVidia paper.
 It includes 5 convolutional layers followed by 4 fully connected layers.
 ReLU activation was used throughout.
-I added 3 dropout layers to prevent over-fitting.
+I added 3 dropout layers as well as L2 regularization to all appropiate layers to prevent over-fitting.
 
               layer output size
      -------------- ------------------
@@ -89,9 +107,3 @@ The model was trained with Adam optimizer and batch size of 32.
 Data augmentation was used to generate 20000 samples per epoch.
 The training took 10 epochs, as additional epochs did not seem
 to improve performance.
-  
-![input](./img/src.png)
-
-![input](./img/cropped.png)
-
-![input](./img/jitter.png)
