@@ -67,6 +67,7 @@ samples with small/zero steering angle in the training set to help the model lea
 to drive in compliated situation (curve track). At later epoches, I will gradually
 introduce those samples back to make sure the model also learn to drive straight
 when needed.
+
 ![histogram](./img/hist.png)
 
 ## Neural network design
