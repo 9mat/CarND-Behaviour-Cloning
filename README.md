@@ -54,6 +54,7 @@ This is an image from the orignal data set
 ![src](./img/src.png)
 
 This is the same image after being cropped and resized
+
 ![cropped](./img/cropped.png)
 
 This is several images generated from the same image with random transformation
