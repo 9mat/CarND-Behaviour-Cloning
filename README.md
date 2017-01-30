@@ -103,7 +103,14 @@ I added 3 dropout layers as well as L2 regularization to all appropiate layers t
               Dense (None, 1)    
               
 ## Training
+![mse](./img/mse.png)
+
 The model was trained with Adam optimizer and batch size of 32. 
 Data augmentation was used to generate 20000 samples per epoch.
-The training took 10 epochs, as additional epochs did not seem
+The MSE during training is plotted in the figure above.
+Probably due to data augmentation that increases input variance in
+training set, the training mean square error was much higher than
+the validation set. 
+The final training took 10 epochs, as additional epochs did not seem
 to improve performance.
+
