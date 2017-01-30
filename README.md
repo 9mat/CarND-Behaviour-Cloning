@@ -82,4 +82,16 @@ I added 3 dropout layers to prevent over-fitting.
                Relu (None, 64)         
               Dense (None, 16)         
                Relu (None, 16)         
-              Dense (None, 1)          
+              Dense (None, 1)    
+              
+## Training
+The model was trained with Adam optimizer and batch size of 32. 
+Data augmentation was used to generate 20000 samples per epoch.
+The training took 10 epochs, as additional epochs did not seem
+to improve performance.
+  
+![input](./img/src.png)
+
+![input](./img/cropped.png)
+
+![input](./img/jitter.png)
