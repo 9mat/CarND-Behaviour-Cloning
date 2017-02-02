@@ -60,14 +60,14 @@ to the right and subtracting when shifting to the left.
 5. Brightness adjustment: to mimic different lighting conditions
 
 This is an image from the orignal data set  
-![src](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/src.png)
+![src](https://raw.githubusercontent.com/9mat/CarND-Behaviour-Cloning/master/img/src.png)
 
 This is the same image after being cropped and resized
 
-![cropped](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/cropped.png)
+![cropped](https://raw.githubusercontent.com/9mat/CarND-Behaviour-Cloning/master/img/cropped.png)
 
 This is several images generated from the same image with random transformation
-![jitter](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/jitter.png)
+![jitter](https://raw.githubusercontent.com/9mat/CarND-Behaviour-Cloning/master/img/jitter.png)
 
 The dataset is rather unbalanced, with a large portion of its having steering angle 
 of zeros (drivin straight).
@@ -82,7 +82,7 @@ with a probability of 1/(1+i). This means that, in the very first epoch, there w
 small steering angles; while in the 9 epoch, the proportion of small angle samples will be 
 90% of that of the original data (plus images from the 2 additonal cameras)
 
-![histogram](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/hist.png)
+![histogram](https://raw.githubusercontent.com/9mat/CarND-Behaviour-Cloning/master/img/hist.png)
 
 ## Neural network design
 The design of the final model follow closely the implementation of the nVidia paper.
@@ -120,7 +120,7 @@ prevent over-fitting.
               Dense (None, 1)    
               
 ## Training
-![mse](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/mse.png)
+![mse](https://raw.githubusercontent.com/9mat/CarND-Behaviour-Cloning/master/img/mse.png)
 
 The model was trained with Adam optimizer and batch size of 32. 
 Data augmentation was used to generate 20000 samples per epoch.
