@@ -18,6 +18,15 @@ and could potentially improve the performance, but due to time constraint, I res
 myself to the abovementioned set of `8036` samples, and make use of data augmentation 
 to generate additional dataon the fly during training.
 
+The original set of data consists of 8036 samples, 4361 of which having steering angles
+of zero, 1775 with negative steering angles and 1900 with positive steering angles.
+Regarding high-curvature tracks, there are 464 samples with steering angle less than -0.2
+rad (-11 degree), and 395 with steering angles more than 0.2 rad (11 degree).
+The data is clearly unbalanced, and high-curvature cases are under-represented. 
+See the histogram plotted below for full details of the original data.
+
+I will address this unbalance and under-representation with data augmentation discussed below.
+
 ### Data normalization
 The images, originally in RGB, were converted to YUV color space, and the three color 
 channels were then recentered and rescaled to the min-max values of `-0.5` and `0.5`.
@@ -62,11 +71,16 @@ This is several images generated from the same image with random transformation
 
 The dataset is rather unbalanced, with a large portion of its having steering angle 
 of zeros (drivin straight).
+In each epochs, 20000 images will be generated for training.
 To facilitate learning, at the begining of the training, I decreased the proportion of 
 samples with small/zero steering angle in the training set to help the model learn
 to drive in difficult cases (curved track).
 In later epoches, I would gradually introduce those samples back to make sure the model
 also learn to drive straight when needed.
+Specifically, in epoch i, I threw away samples with steering angles less than 0.1 rad
+with a probability of 1/(1+i). This means that, in the very first epoch, there will be no
+small steering angles; while in the 9 epoch, the proportion of small angle samples will be 
+90% of that of the original data (plus images from the 2 additonal cameras)
 
 ![histogram](https://github.com/9mat/CarND-Behaviour-Cloning/blob/master/img/hist.png)
 
@@ -113,7 +127,10 @@ Data augmentation was used to generate 20000 samples per epoch.
 The MSE during training is plotted in the figure above.
 Probably due to data augmentation that increases input variance in
 training set, the training mean square error was much higher than
-the validation set. 
+the validation set.
 The final training took 10 epochs, as additional epochs did not seem
 to improve performance.
+
+## Results
+[![Driving in Autonomous mode](https://img.youtube.com/vi/CjaymivJ_QU/0.jpg)](https://www.youtube.com/watch?v=CjaymivJ_QU&feature=youtu.be)
 
